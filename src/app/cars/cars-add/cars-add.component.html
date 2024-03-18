@@ -1,0 +1,49 @@
+<form
+  #formAllInfos="ngForm"
+  (ngSubmit)="onSubmitForm(formAllInfos)"
+  class="d-flex flex-column w-25"
+>
+  <label for="carInput" class="form-label"
+    >Renseignez les informations de création :</label
+  >
+  <input
+    class="form-control"
+    type="text"
+    id="name"
+    name="name"
+    [(ngModel)]="name"
+    placeholder="Modèle"
+  />
+  <input
+    class="form-control"
+    type="text"
+    id="price"
+    name="price"
+    [(ngModel)]="price"
+    placeholder="Prix"
+  />
+  <input
+    class="form-control"
+    type="text"
+    id="color"
+    name="color"
+    [(ngModel)]="color"
+    placeholder="Couleur"
+  />
+  <select
+    class="form-select w-100"
+    aria-label="Default select example"
+    name="brand"
+    id="brand"
+    [(ngModel)]="brand"
+  >
+    <option selected>Choisir la marque</option>
+    <option value="{{ brand.name }}" *ngFor="let brand of brandsName">
+      {{ brand.name }}
+    </option>
+  </select>
+  <button class="btn btn-success" type="submit">Créer</button>
+</form>
+<div>
+  <p>{{ response }}</p>
+</div>

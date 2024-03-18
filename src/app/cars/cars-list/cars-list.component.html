@@ -1,0 +1,38 @@
+<div class="list-form d-flex m-5">
+  <select
+    class="form-select w-25"
+    aria-label="Default select example"
+    name=""
+    id=""
+    (change)="selectBrand($event)"
+  >
+    <option selected>Choisir la marque</option>
+    <option value="{{ brand.id }}" *ngFor="let brand of brandsName">
+      {{ brand.name }}
+    </option>
+  </select>
+  <button class="btn btn-success" (click)="getCarsByBrand()">Afficher</button>
+</div>
+
+@if (isSubmit && modelsBybrand.length > 0) {
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Modèle</th>
+      <th>Prix</th>
+      <th>Couleur</th>
+      <th>Marque</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (model of modelsBybrand; track modelsBybrand) {
+    <tr>
+      <td>{{ model.name }}</td>
+      <td>{{ model.price }}</td>
+      <td>{{ model.color }}</td>
+      <td>{{ model.brand.name }}</td>
+    </tr>
+    }
+  </tbody>
+</table>
+}
